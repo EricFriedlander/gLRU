@@ -1,3 +1,5 @@
+% Generates figure 1
+
 alpha = .8;
 n = 10000;
 chunks = 5;
@@ -10,7 +12,6 @@ scale = 300;
 k = 1/shape;
 sig = scale*k;
 theta = sig/k;
-% sizes = unidrnd(7,1,n);
 sizes = ones(1,n) * chunks;
 biggest = max(sizes);  
 totpop = sum(pop);
