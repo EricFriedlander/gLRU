@@ -8,3 +8,4 @@ in order to run the code in this repo.
 
 Figure 1 can be generated using the scipt "LRUgLRUComparison.m".
 
+All graphs in Figure 2 can be generated using the script "approxSimComp.m"
