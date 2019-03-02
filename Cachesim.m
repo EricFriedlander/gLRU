@@ -22,8 +22,6 @@ function Cachesim(N, alpha, chunks, C)
     hitrate = @(pop,k) expcdf(tc,1/pop).^k- expcdf(tc,1/pop).^(k+1);
 
     %% Generate interarrrival times and file selections
-
-%     times = exprnd(totpop * lambda,1,N);
     fileselect = randsample(1:n, N, true, pop/totpop);
 
     %% Complete Simulation

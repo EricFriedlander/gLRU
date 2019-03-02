@@ -34,7 +34,37 @@ delete(mypool)
 save('simout1.mat','out1')
 
 
+fileLen = [60*10 60*30 60*60];
+out2 = zeros(2, 2, 3, 2, 4, 3, 4,10);
+% mypool = parpool(4)
+parfor g = 1:4
+    for a = 1:2
+        for b = 1:2
+            for c = 1:3
+                for d = 1:2
+                    for e = 1:4
+                        for f = 1:3     
+                          out2(a,b,c,d,e,f,g,:) = ...
+                               CachesimCompEff(n,alpha(a),fileLen(c),Cprop(b),4, ...
+                               stupd(d), clen(e), traffic(f), procrate(g),.01);
+                        end
+                    end
+                end
+            end
+        end
+    end
+end
+% delete(mypool)
+        
+save('simout2.mat','out2')
+
+% tic
+% CachesimCompEff(1000,.8,10,.1,1, ...
+%                                    4, 1, .9,30,.01)
+% toc
+
 %% Analysis of Out1
+
 diff = round(out1(:,:,1,:,:,:,:,1:5)-out1(:,:,1,:,:,:,:,6:10),2);
 diffPerc = diff./out1(:,:,1,:,:,:,:,6:10);
 diffPerc(isnan(diffPerc(:))) = 0;
@@ -185,6 +215,8 @@ print(fig,'-dpng',filename)
 
 
 %% Examine Infinite Ones
+
+
 gLRU = out1(:,:,1,:,:,:,:,4);
 LRU = out1(:,:,1,:,:,:,:,9);
 
