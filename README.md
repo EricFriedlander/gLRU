@@ -8,4 +8,4 @@ in order to run the code in this repo.
 
 Figure 1 can be generated using the scipt "LRUgLRUComparison.m".
 
-All graphs in Figure 2 can be generated using the script "approxSimComp.m"
+All graphs in Figure 2 can be generated using the script "approxSimComp.m". It is recommended that you run this code in parallel for the sake of time. There is already a parfor loop in the code, but the user must configer the code to run on their particular cluster. The output of our simulations is stored in 'simout1.mat' and can be used to recreate the figures and tables.
