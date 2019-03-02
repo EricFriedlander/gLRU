@@ -1,5 +1,7 @@
 % Generates figure 1
 
+
+% Set all parameters
 alpha = .8;
 n = 10000;
 chunks = 5;
@@ -25,7 +27,8 @@ while i <= n
         i = i+1;
     end
 end
-%     sizes = ones(1,n) * chunks;
+
+
 if sizeType == 2
     sizes = sort(sizes,'descend');
 elseif sizeType == 3
