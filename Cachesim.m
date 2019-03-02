@@ -13,7 +13,7 @@ function Cachesim(N, alpha, chunks, C)
 
     %% Solve for tc
     disp('Solving for root')
-    func = @(t) timeapprox(t,n,pop,sizes)-C;
+    func = @(t) timeapproxgLRU(t,n,pop,sizes)-C;
     options = optimset('TolX', 10^(-16));
     tc = fzero(func,0,options)
 
