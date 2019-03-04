@@ -19,3 +19,4 @@ In order to run the MSR Cambrdige Traces, download them from :
 http://iotta.snia.org/traces/388
 Once they are downloaded run them through the script "GenTraceFile.m".
 After you have generated "mdstrace0_data.mat" and "webtrace0_data.mat", run "prodTraceSim.m" to run the simulations. Again, it is highly recommended that you alter the code to run in parallel.
+Once "prodSimResults.mat" is generated, run "traceResultAnalysis to number is tables 3 and 4.
