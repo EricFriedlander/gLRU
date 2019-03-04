@@ -7,7 +7,6 @@ c_start = 15;
 
 
 [avg_chunk, cache_prop] = ndgrid([10 50 100], [.01 .02 .025 .05 .1 .2 .25 .5]);
-[avg_chunk, cache_prop] = ndgrid([10 100], [.01 .5]);
 results = zeros(3, 2, numel(avg_chunk), 6); 
 % mypool = parpool(64)
 % configCluster
@@ -47,9 +46,6 @@ parfor i = 1:numel(avg_chunk)
 end
 
 parfor i = 1:numel(avg_chunk)
-                        
-
-
 
             input_files =  'webtrace0_data.mat'
 
@@ -65,5 +61,5 @@ parfor i = 1:numel(avg_chunk)
             results(3, 2, i, :) = temp;
 end
 % matlabpool close 
-save('SimResults.mat', 'results')
+save('prodSimResults.mat', 'results')
 

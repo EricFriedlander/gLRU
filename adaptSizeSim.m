@@ -31,6 +31,8 @@ function out=adaptSizeSim(trace_file, avg_chunk, cache_prop, aPT, ...
     c = c_start;
     c = -avg_chunk/log(.5)
     c_max = -max(file_sizes)/log(.99)
+   
+    
     %% Complete Simulation
    disp('Entering  Adapt Size Simulation')
    cache = zeros(1,cachesize); 
@@ -139,15 +141,6 @@ function out=adaptSizeSim(trace_file, avg_chunk, cache_prop, aPT, ...
                        (timestamp(j)-timestamp(1))*10^(-7), ...
                        sizes, cachesize, num_obj, obj_ids);
                end
-    %            options = optimset('Display','iter','PlotFcns',@optimplotfval);
-%                c_init = c;
-%                for c_test = 0:ceil(c_max)
-%                    if c_opt(c_test) < c_opt(c)
-%                        c_init = c_test
-%                    end
-%                end
-%                c_init
-%                options = optimset('Display','iter','PlotFcns',@optimplotfval);
                [a,b] = max(requests);
                if mod(j,stepNum) == 0
                     [c, best] = fminbnd(c_opt, 0, c_max)
@@ -163,10 +156,6 @@ function out=adaptSizeSim(trace_file, avg_chunk, cache_prop, aPT, ...
                out(3) = waitsum/j;
                out(4) = delaysum/j;
                out(5) = numdelaysum/j;
-    %            numhitsd = sqrt(((j-stepNum-1)*numhitsd^2 + (stepNum-1)*std(hits==0)^2)/(j-1))
-    %            waitsd = sqrt(((j-stepNum-1)*waitsd^2 + (stepNum-1)*std(wait)^2)/(j-1))
-    %            delaysd = sqrt(((j-stepNum-1)*delaysd^2 + (stepNum-1)*std(delay)^2)/(j-1))
-    %            numdelaysd = sqrt(((j-stepNum-1)*numdelaysd^2 + (stepNum-1)*std(delay>0)^2)/(j-1))
                hits = zeros(1,stepNum);
                miss =  zeros(1,stepNum);
                wait = zeros(1,stepNum);
