@@ -1,27 +1,18 @@
-%  Generates figures 3, 4, and 5 and data from Tables 2,5, 6
-% Note that if one has already run the simulations and generated
-% 'simout1.mat' you can skip the first section. You may also want to omit
-% sizeType 2 and 3 to speed things up as those results are only included
-% in the appendix of the paper.
+%  Generates figures 3 and 5 and data from Table 2
 
-
-n = 1000; % number of files
+n = 1000;
 
 
 
-alpha = [.8 1.2]; % Parameter for zipf
-Cprop = [.1 .2]; % Size of cache as a fraction of total file size
-
-
+alpha = [.8 1.2];
+Cprop = [.1 .2];
 sizeType = [1 2 3];
 % 1 indicates independence between popularity and file size, 2 indicates
 % positive correlation, and 3 indicates negative correlation
-
-
 stupd = [3 4]; % Start up delay
 clen = [1 2 3 4]; % chunk length
-traffic = [.1 .5 .9]; % Traffic rate
-procrate = [1 2 10 30]; % Server processing rate
+traffic = [.1 .5 .9]; %
+procrate = [1 2 10 30];
 out1 = zeros(2, 2, 3, 2, 4, 3, 4, 10);
 % mypool = parpool(4)
 parfor g = 1:4
@@ -45,7 +36,7 @@ end
 save('simout1.mat','out1')
 
 
-%% Analysis of non correlated simulations
+%% Analysis of Out1
 load('simout1.mat')
 diff = round(out1(:,:,1,:,:,:,:,1:5)-out1(:,:,1,:,:,:,:,6:10),2);
 diffPerc = diff./out1(:,:,1,:,:,:,:,6:10);
@@ -142,29 +133,7 @@ inp = diff(:,:,:,:,:,:,:,5);
 [m(15), ind] = min(inp(:));
 [i(15,1),i(15,2),i(15,3),i(15,4),i(15,5),i(15,6),i(15,7)] = ind2sub(size(diff),ind);
 
-% Best by Percent
-inp = diffPerc(:,:,:,:,:,:,:,1);
-[m(16), ind] = max(inp(:));
-[i(16,1),i(16,2),i(16,3),i(16,4),i(16,5),i(16,6),i(16,7)] = ind2sub(size(diff),ind);
-
-inp = diffPerc(:,:,:,:,:,:,:,2);
-[m(17), ind] = min(inp(:));
-[i(17,1),i(17,2),i(17,3),i(17,4),i(17,5),i(17,6),i(17,7)] = ind2sub(size(diff),ind);
-
-inp = diffPerc(:,:,:,:,:,:,:,3);
-[m(18), ind] = min(inp(:));
-[i(18,1),i(18,2),i(18,3),i(18,4),i(18,5),i(18,6),i(18,7)] = ind2sub(size(diff),ind);
-
-inp = diffPerc(:,:,:,:,:,:,:,4);
-[m(19), ind] = min(inp(~isinf(inp(:))));
-[i(19,1),i(19,2),i(19,3),i(19,4),i(19,5),i(19,6),i(19,7)] = ind2sub(size(diff),ind);
-
-inp = diffPerc(:,:,:,:,:,:,:,5);
-[m(20), ind] = min(inp(~isinf(inp(:))));
-[i(20,1),i(20,2),i(20,3),i(20,4),i(20,5),i(20,6),i(20,7)] = ind2sub(size(diff),ind);
-
-
-%% Generate histogrames for relative differences with no correlation
+%% Generate histogrames for relative differences
 inp = diffPerc(:,:,:,:,:,:,:,1);
 [m(16), ind] = max(inp(:));
 [i(16,1),i(16,2),i(16,3),i(16,4),i(16,5),i(16,6),i(16,7)] = ind2sub(size(diff),ind);
@@ -218,7 +187,7 @@ fig = gcf;
 print(fig,'-dpng',filename)
 
 
-%% Genereate Histograms for gross differences with no correlation
+%% Genereate Histograms for gross differences
 gLRU = out1(:,:,1,:,:,:,:,4);
 LRU = out1(:,:,1,:,:,:,:,9);
 
@@ -266,7 +235,7 @@ fig = gcf;
 print(fig,'-dpng',filename)
 
 
-%% Examine Different Popularities (I.e. correlations between popularity and file size
+%% Examine Different Popularities
 diff2 = round(out1(:,:,2,:,:,:,:,1:5)-out1(:,:,2,:,:,:,:,6:10),2);
 diffPerc2 = diff./out1(:,:,2,:,:,:,:,6:10);
 diffPerc2(isnan(diffPerc2(:))) = 0;
