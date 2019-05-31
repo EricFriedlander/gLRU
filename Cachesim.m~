@@ -1,9 +1,7 @@
 function worst=Cachesim(N, alpha, chunks, C)
 
     %% Input Parameters
-    alpha = .8
-    chunks = 15
-    C = 5
+
     n = 10000;
     pop = zipf_rand(n,alpha,n);
     pop = sort(pop,'descend');
@@ -72,9 +70,9 @@ function worst=Cachesim(N, alpha, chunks, C)
     plot(tbl(:,1),tbl(:,3)/100,'b*','LineWidth',1.5)
     hold on
     set(gca,'fontsize',16)
-    padded = zeros(length(hitest)+1,1);
+    padded = zeros(length(hitest+1),1);
     padded(1:length(tbl(:,3))) = transpose(tbl(:,3)/100);
-    worst_temp = max(abs(transpose([hitest 1-sum(hitest)]) - padded))
+    worst_temp = max(abs(t[hitest 1-sum(hitest)] - padded))
     worst = max(worst, worst_temp)
 
 
@@ -91,10 +89,8 @@ function worst=Cachesim(N, alpha, chunks, C)
     plot(tbl(:,1),tbl(:,3)/100,'k+','LineWidth',1.5)
     hold on
     set(gca,'fontsize',16)
-    padded = zeros(length(hitest)+1,1);
-    padded(1:length(tbl(:,3))) = transpose(tbl(:,3)/100);
-    worst_temp = max(abs(transpose([hitest 1-sum(hitest)]) - padded));
-    worst = max(worst, worst_temp);
+    worst_temp = max(abs([hitest 1-sum(hitest)] - tbl(:,3)/100))
+    worst = max(worst, worst_temp)
     
     fileselect = fileselect(C+1:end);
     hits = hits(C+1:end);
@@ -111,10 +107,8 @@ function worst=Cachesim(N, alpha, chunks, C)
     plot(tbl(:,1),tbl(:,3)/100,'ro','LineWidth',1.5)
     hold on
     set(gca,'fontsize',16)
-    padded = zeros(length(hitest)+1,1);
-    padded(1:length(tbl(:,3))) = transpose(tbl(:,3)/100);
-    worst_temp = max(abs(transpose([hitest 1-sum(hitest)]) - padded));
-    worst = max(worst, worst_temp);
+    worst_temp = max(abs([hitest 1-sum(hitest)] - tbl(:,3)/100))
+    worst = max(worst, worst_temp)
 
     selected = fileselect == 1000;
     tbl = tabulate(hits(selected));
@@ -131,9 +125,7 @@ function worst=Cachesim(N, alpha, chunks, C)
     string(alpha),'_C_',string(C),'_chunks_',string(chunks),'.png');
     fig = gcf;
     print(fig,'-dpng',filename{1})
-    padded = zeros(length(hitest)+1,1);
-    padded(1:length(tbl(:,3))) = transpose(tbl(:,3)/100);
-    worst_temp = max(abs(transpose([hitest 1-sum(hitest)]) - padded));
+    worst_temp = max(abs([hitest 1-sum(hitest)] - tbl(:,3)/100))
     worst = max(worst, worst_temp);
 
 end

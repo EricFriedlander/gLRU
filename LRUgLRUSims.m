@@ -53,26 +53,46 @@ diffPerc(isnan(diffPerc(:))) = 0;
 i = zeros(20,7);
 m = zeros(20,1);
 inp = diffPerc(:,:,:,:,:,:,:,1);
+sum(inp(:)>0)
+sum(inp(:)<0)
 mean(inp(:))
+median(inp(:))
 inp = diffPerc(:,:,:,:,:,:,:,2);
+sum(inp(:)>0)
+sum(inp(:)<0)
 mean(inp(:))
+median(inp(:))
 inp = diffPerc(:,:,:,:,:,:,:,3);
+sum(inp(:)>0)
+sum(inp(:)<0)
 mean(inp(:))
+median(inp(:))
 inp = diffPerc(:,:,:,:,:,:,:,4);
+sum(inp(:)>0)
+sum(inp(:)<0)
 mean(inp(:))
+median(inp(:))
 inp = diffPerc(:,:,:,:,:,:,:,5);
+sum(inp(:)>0)
+sum(inp(:)<0)
 mean(inp(:))
+median(inp(:))
 
 inp = diff(:,:,:,:,:,:,:,1);
 mean(inp(:))
+median(inp(:))
 inp = diff(:,:,:,:,:,:,:,2);
 mean(inp(:))
+median(inp(:))
 inp = diff(:,:,:,:,:,:,:,3);
 mean(inp(:))
+median(inp(:))
 inp = diff(:,:,:,:,:,:,:,4);
 mean(inp(:))
+median(inp(:))
 inp = diff(:,:,:,:,:,:,:,5);
 mean(inp(:))
+median(inp(:))
 
 
 
