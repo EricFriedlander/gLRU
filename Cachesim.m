@@ -1,9 +1,6 @@
 function worst=Cachesim(N, alpha, chunks, C)
 
     %% Input Parameters
-    alpha = .8
-    chunks = 15
-    C = 5
     n = 10000;
     pop = zipf_rand(n,alpha,n);
     pop = sort(pop,'descend');
@@ -78,30 +75,30 @@ function worst=Cachesim(N, alpha, chunks, C)
     worst = max(worst, worst_temp)
 
 
-    tbl = tabulate(hits(10));
-    selected = fileselect == 10;
-    tbl = tabulate(hits(selected));
-    hitest = hitrate(pop(10),0:sizes(10)-1);
-
-    plot(0:sizes(10),[hitest 1-sum(hitest)], 'k--','LineWidth',1.5);
-    xlabel('Number of file chunks')
-    ylabel('Probability of finding in cache')
-    ylim([0 1])
-    hold on
-    plot(tbl(:,1),tbl(:,3)/100,'k+','LineWidth',1.5)
-    hold on
-    set(gca,'fontsize',16)
-    padded = zeros(length(hitest)+1,1);
-    padded(1:length(tbl(:,3))) = transpose(tbl(:,3)/100);
-    worst_temp = max(abs(transpose([hitest 1-sum(hitest)]) - padded));
-    worst = max(worst, worst_temp);
-    
+%     tbl = tabulate(hits(10));
+%     selected = fileselect == 10;
+%     tbl = tabulate(hits(selected));
+%     hitest = hitrate(pop(10),0:sizes(10)-1);
+% 
+%     plot(0:sizes(10),[hitest 1-sum(hitest)], 'k--','LineWidth',1.5);
+%     xlabel('Number of file chunks')
+%     ylabel('Probability of finding in cache')
+%     ylim([0 1])
+%     hold on
+%     plot(tbl(:,1),tbl(:,3)/100,'k+','LineWidth',1.5)
+%     hold on
+%     set(gca,'fontsize',16)
+%     padded = zeros(length(hitest)+1,1);
+%     padded(1:length(tbl(:,3))) = transpose(tbl(:,3)/100);
+%     worst_temp = max(abs(transpose([hitest 1-sum(hitest)]) - padded));
+%     worst = max(worst, worst_temp);
+%     
     fileselect = fileselect(C+1:end);
     hits = hits(C+1:end);
     selected = fileselect == 100;
     tbl = tabulate(hits(selected));
     hitest = hitrate(pop(100),0:sizes(100)-1);
-    
+%     
 
     plot(0:sizes(100),[hitest 1-sum(hitest)], 'r:','LineWidth',1.5);
     xlabel('Number of file chunks')
