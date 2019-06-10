@@ -11,7 +11,7 @@ n = 1000; % number of files
 
 alpha = [.8 1.2]; % Parameter for zipf
 Cprop = [.1 .2]; % Size of cache as a fraction of total file size
-
+font_size = 16;
 
 sizeType = [1 2 3];
 % 1 indicates independence between popularity and file size, 2 indicates
@@ -190,7 +190,7 @@ inp = diffPerc(:,:,:,:,:,:,:,1);
 [i(16,1),i(16,2),i(16,3),i(16,4),i(16,5),i(16,6),i(16,7)] = ind2sub(size(diff),ind);
 histogram(inp(:))
 xlabel('p_c Relative Difference')
-set(gca,'fontsize',16)
+set(gca,'fontsize',font_size)
 filename = strcat('hist_pc.png');
 fig = gcf;
 print(fig,'-dpng',filename)
@@ -200,7 +200,7 @@ inp = diffPerc(:,:,:,:,:,:,:,2);
 [i(17,1),i(17,2),i(17,3),i(17,4),i(17,5),i(17,6),i(17,7)] = ind2sub(size(diff),ind);
 histogram(inp(:))
 xlabel('p_m Relative Difference')
-set(gca,'fontsize',16)
+set(gca,'fontsize',font_size)
 filename = strcat('hist_pm.png');
 fig = gcf;
 print(fig,'-dpng',filename)
@@ -211,7 +211,7 @@ inp = diffPerc(:,:,:,:,:,:,:,3);
 [i(18,1),i(18,2),i(18,3),i(18,4),i(18,5),i(18,6),i(18,7)] = ind2sub(size(diff),ind);
 histogram(inp(:))
 xlabel('T_w Relative Difference')
-set(gca,'fontsize',16)
+set(gca,'fontsize',font_size)
 filename = strcat('hist_tw.png');
 fig = gcf;
 print(fig,'-dpng',filename)
@@ -222,7 +222,7 @@ inp = diffPerc(:,:,:,:,:,:,:,4);
 edges = [-1.2:.1:0];
 histogram(inp(:),edges)
 xlabel('T_d  Relative Difference')
-set(gca,'fontsize',16)
+set(gca,'fontsize',font_size)
 filename = strcat('hist_td.png');
 fig = gcf;
 print(fig,'-dpng',filename)
@@ -232,7 +232,7 @@ inp = diffPerc(:,:,:,:,:,:,:,5);
 [i(20,1),i(20,2),i(20,3),i(20,4),i(20,5),i(20,6),i(20,7)] = ind2sub(size(diff),ind);
 histogram(inp(:))
 xlabel('p_d Relative Difference')
-set(gca,'fontsize',16)
+set(gca,'fontsize',font_size)
 filename = strcat('hist_pd.png');
 fig = gcf;
 print(fig,'-dpng',filename)
@@ -244,7 +244,7 @@ LRU = out1(:,:,1,:,:,:,:,9);
 
 histogram(round(gLRU(:)-LRU(:),2))
 xlabel('T_d Gross Difference')
-set(gca,'fontsize',16)
+set(gca,'fontsize',font_size)
 filename = strcat('hist_tdgr.png');
 fig = gcf;
 print(fig,'-dpng',filename)
@@ -253,7 +253,7 @@ gLRU = out1(:,:,1,:,:,:,:,5);
 LRU = out1(:,:,1,:,:,:,:,10);
 histogram(round(gLRU(:)-LRU(:),2))
 xlabel('p_d Gross Difference')
-set(gca,'fontsize',16)
+set(gca,'fontsize',font_size)
 filename = strcat('hist_pdgr.png');
 fig = gcf;
 print(fig,'-dpng',filename)
@@ -262,7 +262,7 @@ gLRU = out1(:,:,1,:,:,:,:,1);
 LRU = out1(:,:,1,:,:,:,:,6);
 histogram(round(gLRU(:)-LRU(:),2))
 xlabel('p_c Gross Difference')
-set(gca,'fontsize',16)
+set(gca,'fontsize',font_size)
 filename = strcat('hist_pcgr.png');
 fig = gcf;
 print(fig,'-dpng',filename)
@@ -271,7 +271,7 @@ gLRU = out1(:,:,1,:,:,:,:,2);
 LRU = out1(:,:,1,:,:,:,:,7);
 histogram(round(gLRU(:)-LRU(:),2))
 xlabel('p_m Gross Difference')
-set(gca,'fontsize',16)
+set(gca,'fontsize',font_size)
 filename = strcat('hist_pmgr.png');
 fig = gcf;
 print(fig,'-dpng',filename)
@@ -280,7 +280,7 @@ gLRU = out1(:,:,1,:,:,:,:,3);
 LRU = out1(:,:,1,:,:,:,:,8);
 histogram(round(gLRU(:)-LRU(:),2))
 xlabel('T_w Gross Difference')
-set(gca,'fontsize',16)
+set(gca,'fontsize',font_size)
 filename = strcat('hist_twgr.png');
 fig = gcf;
 print(fig,'-dpng',filename)
@@ -359,7 +359,7 @@ hold on
 histogram(inp2(:),'facealpha',.5,'facecolor','g')
 legend('gLRU','LRU','location','northeast')
 xlabel('p_c Gross Difference')
-set(gca,'fontsize',16)
+set(gca,'fontsize',font_size)
 filename = strcat('histcomp_pc.png');
 fig = gcf;
 print(fig,'-dpng',filename)
@@ -372,7 +372,7 @@ hold on
 histogram(inp2(:),'facealpha',.5,'facecolor','g')
 legend('gLRU','LRU','location','northeast')
 xlabel('p_m Gross Difference')
-set(gca,'fontsize',16)
+set(gca,'fontsize',font_size)
 filename = strcat('histcomp_pm.png');
 fig = gcf;
 print(fig,'-dpng',filename)
@@ -385,7 +385,7 @@ hold on
 histogram(inp2(:),'facealpha',.5,'facecolor','g')
 legend('gLRU','LRU','location','northeast')
 xlabel('T_w Gross Difference')
-set(gca,'fontsize',16)
+set(gca,'fontsize',font_size)
 filename = strcat('histcomp_tw.png');
 fig = gcf;
 print(fig,'-dpng',filename)
@@ -398,7 +398,7 @@ hold on
 histogram(inp2(:),'facealpha',.5,'facecolor','g')
 legend('gLRU','LRU','location','northeast')
 xlabel('T_d Gross Difference')
-set(gca,'fontsize',16)
+set(gca,'fontsize',font_size)
 filename = strcat('histcomp_td.png');
 fig = gcf;
 print(fig,'-dpng',filename)
@@ -411,7 +411,7 @@ hold on
 histogram(inp2(:),'facealpha',.5,'facecolor','g')
 legend('gLRU','LRU','location','northeast')
 xlabel('p_d Gross Difference')
-set(gca,'fontsize',16)
+set(gca,'fontsize',font_size)
 filename = strcat('histcomp_pd.png');
 fig = gcf;
 print(fig,'-dpng',filename)
